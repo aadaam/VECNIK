@@ -1,4 +1,3 @@
-
 //========================================
 // shader
 //========================================
@@ -24,13 +23,13 @@
 
   CartoShader.prototype.compile = function(shader) {
       if(typeof shader === 'string') {
-          shader = eval("(function() { return " + shader +"; })()");
+          shader =JSON.parse(shader);
       }
       this.shader_src = shader;
       for(var attr in shader) {
           var c = mapper[attr];
           if(c) {
-              this.compiled[c] = eval("(function() { return shader[attr]; })();");
+              this.compiled[c] =  shader[attr];
           }
       }
 
